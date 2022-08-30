@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Evento</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <link href="Style/styleCss.css" rel="stylesheet"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Lista de eventos</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <a class="waves-effect waves-light btn" href="/cadastrarEvento">
+                        <i class="material-icons left">control_point</i>
+                        Cadastrar evento
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Locas</th>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Opções</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="evento : ${eventos}">
+            <td><span th:text="${evento.nome}"></span></td>
+            <td><span th:text="${evento.local}"></span></td>
+            <td><span th:text="${evento.data}"></span></td>
+            <td><span th:text="${evento.horario}"></span></td>
+            <td>
+                <a class="waves-effect waves-light btn-small" title="Visualizar"
+                   th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}">
+                    <i class="material-icons">create</i>
+                </a>
+                <a class="waves-effect waves-light btn-small" title="Deletar"
+                   th:href="${(#mvc.url('EC#deleteEvento').arg(0, evento.id)).build()}">
+                    <i class="material-icons">delete</i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"/>
+<script type="text/javascript" src="materialize/js/materialize.min.js"/>
+</body>
+</html>

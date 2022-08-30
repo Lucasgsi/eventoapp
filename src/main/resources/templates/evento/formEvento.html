@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <link href="Style/styleCss.css" rel="stylesheet"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Cadastro de Eventos</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <a class="waves-effect waves-light btn" href="/eventos">
+                        <i class="material-icons left">format_list_bulleted</i>
+                        Listar eventos
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<form class="container formEvento" method="post">
+
+    <th:block th:include="mensagemValidacao"/>
+
+    Nome:<input type="text" value="" name="nome"/>
+    <div class="row">
+        <div class="input-field col s6">
+            Local:<input type="text" value="" name="local"/>
+        </div>
+        <div class="input-field col s3">
+            Data:<input type="date" value="" name="data"/>
+        </div>
+        <div class="input-field col s3">
+            Horario:<input type="time" value="" name="horario"/>
+        </div>
+    </div>
+    <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+</form>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"/>
+<script type="text/javascript" src="materialize/js/materialize.min.js"/>
+</body>
+</html>
